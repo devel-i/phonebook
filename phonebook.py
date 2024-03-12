@@ -83,7 +83,7 @@ def find_contact():
         '5. По адресу\n'
     )
     var = input('Выберите вариант поиска: ')
-    while var not in ('1', '2', '3', '4'):
+    while var not in ('1', '2', '3', '4', '5'):
         print('Некорректный ввод данных')
         var = input('Выберите вариант поиск: ')
     i_var = int(var) - 1
@@ -96,8 +96,15 @@ def find_contact():
         if search in contact_lst[i_var]:
             print(contact)
 
-def copy_line():
+
+def copy_contact():
     pass
+    # n_copy = int(input('Введите строку которую нужно скопировать: '))
+    with open('phonebook.txt', 'r') as source, open('new_phonebook.txt', 'a', encoding='utf-8') as destination:
+        pass
+    #     stroke_contact: str = source.readline(n_copy)
+    # print(stroke_contact)
+    # destination.write(stroke_contact)
 
 
 # UI
@@ -105,18 +112,18 @@ def ui():
     with open('phonebook.txt', 'a', encoding='utf-8'):
         pass
     choise = '0'
-    while choise != '4':
+    while choise != '5':
         print(
             'Возможные варианты действий: \n'
             '1. Добавление нового контакта\n'
             '2. Вывод данных на экран\n'
             '3. Поиск контакта\n'
-            '4. Копировать строку в другой файл\n'
+            '4. Копировать контакт в другой телефонный справочник\n'
             '5. Выход из программы\n'
         )
         choise = input('Выберите вариант действия: ')
 
-        while choise not in ('1', '2', '3', '4'):
+        while choise not in ('1', '2', '3', '4', '5'):
             print('Некорректный ввод')
             choise = input('Выберите вариант действия: ')
 
@@ -127,28 +134,10 @@ def ui():
         elif choise == '3':
             find_contact()
         elif choise == '4':
-            copy_line()
+            copy_contact()
         else:
             print('Всего доброго!')
 
 
-ui()
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+if __name__ == '__main__':
+    ui()
