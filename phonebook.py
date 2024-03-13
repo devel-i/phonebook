@@ -97,15 +97,16 @@ def find_contact():
             print(contact)
 
 
+# Копирование строки в другой текстовый файл
 def copy_contact():
-    pass
-    # n_copy = int(input('Введите строку которую нужно скопировать: '))
-    with open('phonebook.txt', 'r') as source, open('new_phonebook.txt', 'a', encoding='utf-8') as destination:
-        pass
-    #     stroke_contact: str = source.readline(n_copy)
-    # print(stroke_contact)
-    # destination.write(stroke_contact)
-
+    num_str = input('Введите номер строки, которую нужно скопировать: ')
+    with open('phonebook.txt', 'r', encoding='utf-8') as source, open('new_phonebook.txt', 'a', encoding='utf-8') as destination:
+        copy_contacts_str = source.read()
+        list_contacts = copy_contacts_str.rstrip().split('\n\n')
+        for i, contact in enumerate(list_contacts, 1):
+            if i == int(num_str):
+                destination.write(f'{contact} \n\n')
+                print(f'Контакт {contact} успешно скопирован\n')
 
 # UI
 def ui():
